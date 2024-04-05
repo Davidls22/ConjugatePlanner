@@ -49,7 +49,7 @@ struct MainInformation {
     }
 }
 
-struct Exercise {
+struct Exercise: Hashable {
     var name: String
     var sets: Int // Number of sets
     var reps: Int // Number of repetitions

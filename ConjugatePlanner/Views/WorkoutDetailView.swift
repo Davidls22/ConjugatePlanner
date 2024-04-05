@@ -24,7 +24,24 @@ struct WorkoutDetailView: View {
                     .padding()
                 Spacer()
             }
+            List {
+                Section(header: Text("Exercises")) {
+                    ForEach(workout.exercises, id: \.self) { exercise in
+                        VStack(alignment: .leading) {
+                            Text(exercise.name)
+                                .font(.headline)
+                            Text("Sets: \(exercise.sets)")
+                            Text("Reps: \(exercise.reps)")
+                            Text("Intensity: \(exercise.intensity)")
+                            Text("Rest Time: \(exercise.restTime)")
+                            Text("Notes: \(exercise.notes)")
+                        }
+                        .padding(.vertical, 4)
+                    }
+                }
+            }
         }
+
         .navigationTitle(workout.mainInformation.name)
     }
 }
