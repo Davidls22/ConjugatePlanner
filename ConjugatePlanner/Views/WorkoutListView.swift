@@ -12,12 +12,12 @@ struct WorkoutListView: View {
     
     var body: some View {
         List {
-            ForEach(workoutData.workouts) { workout in
-                    Text(workout.mainInformation.name)
-                  }
-        }
-        .navigationTitle("All Workouts")
-    }
+                   ForEach(workouts) { workout in
+                       NavigationLink(workout.mainInformation.name, destination: WorkoutDetailView(workout: workout))
+                   }
+               }
+               .navigationTitle(navigationTitle)
+           }
 }
 
 extension WorkoutListView {
