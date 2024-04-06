@@ -8,32 +8,41 @@
 import SwiftUI
 
 struct WorkoutListView: View {
-    @StateObject var workoutData = WorkoutData()
+    @EnvironmentObject private var workoutData: WorkoutData
+    let category: MainInformation.Category
+    
+    private let listBackgroundColor = AppColor.background
+    private let listTextColor = AppColor.foreground
     
     var body: some View {
         List {
-                   ForEach(workouts) { workout in
-                       NavigationLink(workout.mainInformation.name, destination: WorkoutDetailView(workout: workout))
-                   }
-               }
-               .navigationTitle(navigationTitle)
-           }
+            ForEach(workouts) { workout in
+                NavigationLink(workout.mainInformation.name, destination: WorkoutDetailView(workout: workout))
+            }
+            .listRowBackground(listBackgroundColor)
+            .foregroundColor(listTextColor)
+        }
+        .navigationTitle(navigationTitle)
+    }
 }
 
-extension WorkoutListView {
-  var workouts: [Workout] {
-    workoutData.workouts
-  }
-  
-  var navigationTitle: String {
-    "All Workouts"
-  }
+
+    extension WorkoutListView {
+        private var workouts: [Workout] {
+            workoutData.workouts(for: category)
+        }
+    
+
+    private var navigationTitle: String {
+        "\(category.rawValue) Workouts"
+    }
 }
 
 struct WorkoutListView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            WorkoutListView()
+            WorkoutListView(category: .maxEffort)
+                    .environmentObject(WorkoutData())
         }
     }
 }

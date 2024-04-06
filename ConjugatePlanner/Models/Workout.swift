@@ -31,10 +31,10 @@ struct MainInformation {
     var category: Category
     
     enum Category: String, CaseIterable {
-        case maxEffort = "Max Effort"
-        case dynamicEffort = "Dynamic Effort"
-        case repetitionEffort = "Repetition Effort"
-        case accessory = "Accessory"
+        case maxEffort = "Max Effort Upper"
+        case dynamicEffort = "Dynamic Effort Upper"
+        case repetitionEffort = "Max Effort Lower"
+        case accessory = "Dynamic Effort Lower"
     }
     
     init(name: String, description: String, author: String, category: Category) {
@@ -130,7 +130,7 @@ extension Workout {
               ),
               Workout(
                   mainInformation: MainInformation(
-                      name: "Accessory Work",
+                      name: "Max Effort Lower",
                       description: "A workout focusing on accessory exercises",
                       author: "Alice Johnson",
                       category: .accessory

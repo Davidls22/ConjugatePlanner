@@ -14,6 +14,8 @@
 		C57ABC212BC088F500A9E197 /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57ABC202BC088F500A9E197 /* Workout.swift */; };
 		C57ABC262BC0919700A9E197 /* WorkoutData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57ABC252BC0919700A9E197 /* WorkoutData.swift */; };
 		C57ABC282BC0958300A9E197 /* WorkoutDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57ABC272BC0958300A9E197 /* WorkoutDetailView.swift */; };
+		C57ABC2A2BC1CA2800A9E197 /* AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57ABC292BC1CA2800A9E197 /* AppColor.swift */; };
+		C57ABC2C2BC1CD6D00A9E197 /* WorkoutCategoryGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57ABC2B2BC1CD6D00A9E197 /* WorkoutCategoryGridView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +27,8 @@
 		C57ABC202BC088F500A9E197 /* Workout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
 		C57ABC252BC0919700A9E197 /* WorkoutData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutData.swift; sourceTree = "<group>"; };
 		C57ABC272BC0958300A9E197 /* WorkoutDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutDetailView.swift; sourceTree = "<group>"; };
+		C57ABC292BC1CA2800A9E197 /* AppColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColor.swift; sourceTree = "<group>"; };
+		C57ABC2B2BC1CD6D00A9E197 /* WorkoutCategoryGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutCategoryGridView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +84,7 @@
 			children = (
 				C57ABC142BC085A400A9E197 /* WorkoutListView.swift */,
 				C57ABC272BC0958300A9E197 /* WorkoutDetailView.swift */,
+				C57ABC2B2BC1CD6D00A9E197 /* WorkoutCategoryGridView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -88,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				C57ABC252BC0919700A9E197 /* WorkoutData.swift */,
+				C57ABC292BC1CA2800A9E197 /* AppColor.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -174,7 +180,9 @@
 				C57ABC282BC0958300A9E197 /* WorkoutDetailView.swift in Sources */,
 				C57ABC262BC0919700A9E197 /* WorkoutData.swift in Sources */,
 				C57ABC132BC085A400A9E197 /* ConjugatePlannerApp.swift in Sources */,
+				C57ABC2C2BC1CD6D00A9E197 /* WorkoutCategoryGridView.swift in Sources */,
 				C57ABC212BC088F500A9E197 /* Workout.swift in Sources */,
+				C57ABC2A2BC1CA2800A9E197 /* AppColor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

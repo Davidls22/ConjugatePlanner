@@ -10,6 +10,9 @@ import SwiftUI
 struct WorkoutDetailView: View {
     let workout: Workout
     
+    private let listBackgroundColor = AppColor.background
+    private let listTextColor = AppColor.foreground
+    
     var body: some View {
         VStack {
             HStack{
@@ -36,8 +39,9 @@ struct WorkoutDetailView: View {
                             Text("Rest Time: \(exercise.restTime)")
                             Text("Notes: \(exercise.notes)")
                         }
+                        .foregroundColor(listTextColor)
                         .padding(.vertical, 4)
-                    }
+                    }.listRowBackground(listBackgroundColor)
                 }
             }
         }
