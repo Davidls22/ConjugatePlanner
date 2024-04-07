@@ -35,15 +35,19 @@ struct CategoryView: View {
   let category: MainInformation.Category
   
   var body: some View {
-    ZStack {
+    HStack {
       Image(category.rawValue)
             .resizable()
         .aspectRatio(contentMode: .fit)
+        .frame(width: 50, height: 50)
+        .padding(.horizontal, 10)
         .opacity(0.25)
         Text(category.rawValue)
-          .font(.title)
-    }
-      
+            .font(.title)
+            .padding(.trailing, 5)
+                    }
+            .frame(height: 300)
+           
   }
 }
 

@@ -20,7 +20,7 @@ struct Workout: Identifiable {
     }
     
     init() {
-        self.init(mainInformation: MainInformation(name: "", description: "", author: "", category: .maxEffort), exercises: [])
+        self.init(mainInformation: MainInformation(name: "", description: "", author: "", category: .maxEffortUpper), exercises: [])
     }
 }
 
@@ -31,10 +31,10 @@ struct MainInformation {
     var category: Category
     
     enum Category: String, CaseIterable {
-        case maxEffort = "Max Effort Upper"
-        case dynamicEffort = "Dynamic Effort Upper"
-        case repetitionEffort = "Max Effort Lower"
-        case accessory = "Dynamic Effort Lower"
+        case maxEffortUpper = "Max Effort Upper"
+        case dynamicEffortUpper = "Dynamic Effort Upper"
+        case maxEffortLower = "Max Effort Lower"
+        case dynamicEffortLower = "Dynamic Effort Lower"
     }
     
     init(name: String, description: String, author: String, category: Category) {
@@ -45,7 +45,7 @@ struct MainInformation {
     }
     
     init() {
-        self.init(name: "", description: "", author: "", category: .maxEffort)
+        self.init(name: "", description: "", author: "", category: .maxEffortUpper)
     }
 }
 
@@ -62,10 +62,10 @@ extension Workout {
     static let testWorkouts: [Workout] = [
         Workout(
             mainInformation: MainInformation(
-                name: "Max Effort Upper Body",
+                name: "Max Effort Upper",
                 description: "A workout focusing on heavy lifts for the upper body",
                 author: "John Doe",
-                category: .maxEffort
+                category: .maxEffortUpper
             ),
             exercises: [
                 Exercise(
@@ -96,10 +96,10 @@ extension Workout {
         ),
         Workout(
                   mainInformation: MainInformation(
-                      name: "Dynamic Effort Lower Body",
+                      name: "Dynamic Effort Lower",
                       description: "A workout focusing on explosive lifts for the lower body",
                       author: "Jane Smith",
-                      category: .dynamicEffort
+                      category: .dynamicEffortLower
                   ),
                   exercises: [
                       Exercise(
@@ -133,7 +133,7 @@ extension Workout {
                       name: "Max Effort Lower",
                       description: "A workout focusing on accessory exercises",
                       author: "Alice Johnson",
-                      category: .accessory
+                      category: .maxEffortLower
                   ),
                   exercises: [
                       Exercise(
