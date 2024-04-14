@@ -13,11 +13,12 @@ struct ModifyWorkoutView: View {
     var body: some View {
         VStack {
             Button("Fill in the workout with test data.") {
+                print("Button tapped")
                 workout.mainInformation = MainInformation(
                     name: "test",
                     description: "test",
                     author: "test",
-                    category: .maxEffortLower
+                    category: .maxEffortUpper
                 )
                 workout.exercises = [
                     Exercise(
@@ -29,16 +30,21 @@ struct ModifyWorkoutView: View {
                         notes: "Some notes"
                     )
                 ]
+                print("Workout filled with test data:", workout)
             }
         }
+        .onAppear {
+            print("ModifyWorkoutView appeared")
+        }
+        .onDisappear {
+            print("ModifyWorkoutView disappeared")
+        }
     }
-    
     
     struct ModifyWorkoutView_Previews: PreviewProvider {
         @State static var workout = Workout()
         static var previews: some View {
             ModifyWorkoutView(workout: $workout)
-            
         }
     }
 }

@@ -19,4 +19,9 @@ class WorkoutData: ObservableObject {
         }
         return filteredWorkouts
     }
+    func add(workout: Workout) {
+            if workout.isValid {
+                workouts.append(workout)
+            }
+        }
 }

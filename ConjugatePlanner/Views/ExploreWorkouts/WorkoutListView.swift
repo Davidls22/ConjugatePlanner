@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct WorkoutListView: View {
-    @EnvironmentObject var workoutData: WorkoutData
+    @EnvironmentObject private var workoutData: WorkoutData
     let category: MainInformation.Category
     
     @State private var isPresenting = false
@@ -29,50 +29,51 @@ struct WorkoutListView: View {
         .toolbar(content: {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button(action: {
+                    newWorkout = Workout()
+                    newWorkout.mainInformation.category = workouts[0].mainInformation.category
                     isPresenting = true
-                }, label: {
+                }) {
                     Image(systemName: "plus")
-                })
-                .sheet(isPresented: $isPresenting, content: {
-                    NavigationView {
-                        ModifyWorkoutView(workout: $newWorkout)
-                            .toolbar(content: {
-                                            ToolbarItem(placement: .cancellationAction) {
-                                              Button("Dismiss") {
-                                                isPresenting = false
-                                              }
-                                            }
-                                            ToolbarItem(placement: .confirmationAction) {
-                                              Button("Add") {
-                                                workoutData.workouts.append(newWorkout)
-                                                isPresenting = false
-                                              }
-                                            }
-                                          })
-                            .navigationTitle("Add a New Workout")
-                    }
-                })
+                }
             }
         })
-    }
-}
-
-
-    extension WorkoutListView {
-        private var workouts: [Workout] {
-            workoutData.workouts(for: category)
+        .sheet(isPresented: $isPresenting) {
+            NavigationView {
+                ModifyWorkoutView(workout: $newWorkout)
+                    .toolbar(content: {
+                        ToolbarItem(placement: .cancellationAction) {
+                            Button("Dismiss") {
+                                isPresenting = false
+                            }
+                        }
+                        ToolbarItem(placement: .confirmationAction) {
+                            if newWorkout.isValid {
+                                Button("Add") {
+                                    workoutData.add(workout: newWorkout)
+                                    isPresenting = false
+                                }
+                            }
+                        }
+                    })
+                    .navigationTitle("Add a New Workout")
+            }
         }
-    
+    }
+
+    private var workouts: [Workout] {
+        workoutData.workouts(for: category)
+    }
 
     private var navigationTitle: String {
         "\(category.rawValue) Workouts"
     }
 }
 
+
 struct WorkoutListView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            WorkoutListView(category: .maxEffortUpper)
+            WorkoutListView(category: .maxEffortLower)
                     .environmentObject(WorkoutData())
         }
     }

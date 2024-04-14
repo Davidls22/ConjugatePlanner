@@ -22,13 +22,20 @@ struct Workout: Identifiable {
     init() {
         self.init(mainInformation: MainInformation(name: "", description: "", author: "", category: .maxEffortUpper), exercises: [])
     }
-}
+    
+    var isValid: Bool {
+       mainInformation.isValid && !exercises.isEmpty
+     }
+    }
+
+
 
 struct MainInformation {
     var name: String
     var description: String
     var author: String
     var category: Category
+    
     
     enum Category: String, CaseIterable {
         case maxEffortUpper = "Max Effort Upper"
@@ -47,7 +54,12 @@ struct MainInformation {
     init() {
         self.init(name: "", description: "", author: "", category: .maxEffortUpper)
     }
-}
+    
+    var isValid: Bool {
+        !name.isEmpty && !description.isEmpty && !author.isEmpty
+      }
+    }
+
 
 struct Exercise: Hashable {
     var name: String
