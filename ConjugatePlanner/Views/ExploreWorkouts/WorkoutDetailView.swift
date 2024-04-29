@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct WorkoutDetailView: View {
-    let workout: Workout
+    @Binding var workout: Workout
+    @State private var isPresenting = false
     
     private let listBackgroundColor = AppColor.background
     private let listTextColor = AppColor.foreground
@@ -35,7 +36,7 @@ struct WorkoutDetailView: View {
                                 .font(.headline)
                             Text("Sets: \(exercise.sets)")
                             Text("Reps: \(exercise.reps)")
-                            Text("Intensity: \(exercise.intensity)")
+                            Text("Weight: \(exercise.weight) \(exercise.weightUnit.rawValue)")
                             Text("Rest Time: \(exercise.restTime)")
                             Text("Notes: \(exercise.notes)")
                         }
@@ -47,14 +48,38 @@ struct WorkoutDetailView: View {
         }
 
         .navigationTitle(workout.mainInformation.name)
-    }
-}
+        .toolbar {
+                ToolbarItem {
+                  HStack {
+                    Button("Edit") {
+                      isPresenting = true
+                    }
+                  }
+                }
+            ToolbarItem(placement: .navigationBarLeading) { Text("") }
+              }
+              
+              .sheet(isPresented: $isPresenting) {
+                NavigationView {
+                  ModifyWorkoutView(workout: $workout)
+                    .toolbar {
+                      ToolbarItem(placement: .confirmationAction) {
+                        Button("Save") {
+                          isPresenting = false
+                        }
+                      }
+                    }
+                    .navigationTitle("Edit Workout")
+                }
+              }
+          }
+        }
 
 struct WorkoutDetailView_Previews: PreviewProvider {
   @State static var workout = Workout.testWorkouts[0]
   static var previews: some View {
     NavigationView {
-      WorkoutDetailView(workout: workout)
+      WorkoutDetailView(workout: $workout)
     }
   }
 }

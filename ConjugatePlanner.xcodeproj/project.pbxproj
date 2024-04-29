@@ -17,6 +17,9 @@
 		C57ABC2A2BC1CA2800A9E197 /* AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57ABC292BC1CA2800A9E197 /* AppColor.swift */; };
 		C57ABC2C2BC1CD6D00A9E197 /* WorkoutCategoryGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57ABC2B2BC1CD6D00A9E197 /* WorkoutCategoryGridView.swift */; };
 		C57ABC322BC2F7A000A9E197 /* ModifyWorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57ABC312BC2F7A000A9E197 /* ModifyWorkoutView.swift */; };
+		C57ABC342BD1CC5700A9E197 /* ModifyMainInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57ABC332BD1CC5600A9E197 /* ModifyMainInformationView.swift */; };
+		C57ABC362BD1CF9B00A9E197 /* ModifyExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57ABC352BD1CF9B00A9E197 /* ModifyExerciseView.swift */; };
+		C57ABC3A2BD1DA9F00A9E197 /* ModifyComponentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57ABC392BD1DA9F00A9E197 /* ModifyComponentsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +34,9 @@
 		C57ABC292BC1CA2800A9E197 /* AppColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColor.swift; sourceTree = "<group>"; };
 		C57ABC2B2BC1CD6D00A9E197 /* WorkoutCategoryGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutCategoryGridView.swift; sourceTree = "<group>"; };
 		C57ABC312BC2F7A000A9E197 /* ModifyWorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyWorkoutView.swift; sourceTree = "<group>"; };
+		C57ABC332BD1CC5600A9E197 /* ModifyMainInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyMainInformationView.swift; sourceTree = "<group>"; };
+		C57ABC352BD1CF9B00A9E197 /* ModifyExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyExerciseView.swift; sourceTree = "<group>"; };
+		C57ABC392BD1DA9F00A9E197 /* ModifyComponentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyComponentsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +127,9 @@
 			isa = PBXGroup;
 			children = (
 				C57ABC312BC2F7A000A9E197 /* ModifyWorkoutView.swift */,
+				C57ABC332BD1CC5600A9E197 /* ModifyMainInformationView.swift */,
+				C57ABC352BD1CF9B00A9E197 /* ModifyExerciseView.swift */,
+				C57ABC392BD1DA9F00A9E197 /* ModifyComponentsView.swift */,
 			);
 			path = ModifyWorkouts;
 			sourceTree = "<group>";
@@ -197,11 +206,14 @@
 			files = (
 				C57ABC322BC2F7A000A9E197 /* ModifyWorkoutView.swift in Sources */,
 				C57ABC152BC085A400A9E197 /* WorkoutListView.swift in Sources */,
+				C57ABC3A2BD1DA9F00A9E197 /* ModifyComponentsView.swift in Sources */,
+				C57ABC362BD1CF9B00A9E197 /* ModifyExerciseView.swift in Sources */,
 				C57ABC282BC0958300A9E197 /* WorkoutDetailView.swift in Sources */,
 				C57ABC262BC0919700A9E197 /* WorkoutData.swift in Sources */,
 				C57ABC132BC085A400A9E197 /* ConjugatePlannerApp.swift in Sources */,
 				C57ABC2C2BC1CD6D00A9E197 /* WorkoutCategoryGridView.swift in Sources */,
 				C57ABC212BC088F500A9E197 /* Workout.swift in Sources */,
+				C57ABC342BD1CC5700A9E197 /* ModifyMainInformationView.swift in Sources */,
 				C57ABC2A2BC1CA2800A9E197 /* AppColor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -20,7 +20,7 @@ struct WorkoutListView: View {
     var body: some View {
         List {
             ForEach(workouts) { workout in
-                NavigationLink(workout.mainInformation.name, destination: WorkoutDetailView(workout: workout))
+                NavigationLink(workout.mainInformation.name, destination: WorkoutDetailView(workout: binding(for: workout)))
             }
             .listRowBackground(listBackgroundColor)
             .foregroundColor(listTextColor)
@@ -29,12 +29,13 @@ struct WorkoutListView: View {
         .toolbar(content: {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button(action: {
-                    newWorkout = Workout()
-                    newWorkout.mainInformation.category = workouts[0].mainInformation.category
-                    isPresenting = true
-                }) {
+                    if let firstWorkout = workouts.first {
+                        newWorkout = Workout(mainInformation: MainInformation(name: "", description: "", author: "", category: firstWorkout.mainInformation.category), exercises: [])
+                        isPresenting = true
+                    }
+                }, label: {
                     Image(systemName: "plus")
-                }
+                })
             }
         })
         .sheet(isPresented: $isPresenting) {
@@ -59,22 +60,30 @@ struct WorkoutListView: View {
             }
         }
     }
-
-    private var workouts: [Workout] {
-        workoutData.workouts(for: category)
-    }
-
-    private var navigationTitle: String {
-        "\(category.rawValue) Workouts"
-    }
 }
+
+    extension WorkoutListView {
+      private var workouts: [Workout] {
+        workoutData.workouts(for: category)
+      }
+      
+      private var navigationTitle: String {
+        "\(category.rawValue) Workouts"
+      }
+      
+      func binding(for workout: Workout) -> Binding<Workout> {
+        guard let index = workoutData.index(of: workout) else {
+          fatalError("Workout not found")
+        }
+        return $workoutData.workouts[index]
+      }
+    }
 
 
 struct WorkoutListView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             WorkoutListView(category: .maxEffortLower)
-                    .environmentObject(WorkoutData())
+        }   .environmentObject(WorkoutData())
         }
     }
-}

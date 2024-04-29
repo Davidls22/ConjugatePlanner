@@ -14,13 +14,13 @@ struct Workout: Identifiable {
     var mainInformation: MainInformation
     var exercises: [Exercise]
     
+    init() {
+        self.init(mainInformation: MainInformation(name: "", description: "", author: "", category: .maxEffortUpper), exercises: [])
+    }
+    
     init(mainInformation: MainInformation, exercises: [Exercise]) {
         self.mainInformation = mainInformation
         self.exercises = exercises
-    }
-    
-    init() {
-        self.init(mainInformation: MainInformation(name: "", description: "", author: "", category: .maxEffortUpper), exercises: [])
     }
     
     var isValid: Bool {
@@ -61,14 +61,45 @@ struct MainInformation {
     }
 
 
-struct Exercise: Hashable {
+struct Exercise: WorkoutComponent, CustomStringConvertible, Hashable {
     var name: String
     var sets: Int // Number of sets
     var reps: Int // Number of repetitions
-    var intensity: String // Weight, Time, Distance, etc.
     var restTime: String // Rest time between sets
     var notes: String // Additional notes for the exercise
+    var weight: Double // Weight lifted
+    var weightUnit: WeightUnit // Weight unit (kg or lbs)
+    
+    // Initializer required by WorkoutComponent protocol
+    init() {
+        self.init(name: "", sets: 0, reps: 0, restTime: "", notes: "", weight: 0.0, weightUnit: .kg)
+    }
+    
+    // Initializer with default parameter values for flexibility
+    init(name: String = "", sets: Int = 0, reps: Int = 0, restTime: String = "", notes: String = "", weight: Double = 0.0, weightUnit: WeightUnit = .kg) {
+        self.name = name
+        self.sets = sets
+        self.reps = reps
+        self.restTime = restTime
+        self.notes = notes
+        self.weight = weight
+        self.weightUnit = weightUnit
+    }
+    
+    // CustomStringConvertible implementation
+    var description: String {
+        return "Exercise: \(name), Sets: \(sets), Reps: \(reps), Rest Time: \(restTime), Notes: \(notes), Weight: \(weight) \(weightUnit.rawValue)"
+    }
 }
+
+enum WeightUnit: String, CaseIterable {
+    case kg = "kg"
+    case lbs = "lbs"
+}
+
+
+
+
 
 extension Workout {
     static let testWorkouts: [Workout] = [
@@ -84,7 +115,6 @@ extension Workout {
                     name: "Bench Press",
                     sets: 5,
                     reps: 5,
-                    intensity: "Heavy",
                     restTime: "2 minutes",
                     notes: "Increase weight each set"
                 ),
@@ -92,7 +122,6 @@ extension Workout {
                     name: "Pull-ups",
                     sets: 4,
                     reps: 8,
-                    intensity: "Bodyweight",
                     restTime: "90 seconds",
                     notes: "Add weight if possible"
                 ),
@@ -100,7 +129,6 @@ extension Workout {
                     name: "Rows",
                     sets: 3,
                     reps: 10,
-                    intensity: "Moderate",
                     restTime: "60 seconds",
                     notes: "Focus on form"
                 )
@@ -118,7 +146,6 @@ extension Workout {
                           name: "Box Jumps",
                           sets: 5,
                           reps: 5,
-                          intensity: "Explosive",
                           restTime: "2 minutes",
                           notes: "Use a challenging height"
                       ),
@@ -126,7 +153,6 @@ extension Workout {
                           name: "Deadlifts",
                           sets: 6,
                           reps: 3,
-                          intensity: "Moderate to Heavy",
                           restTime: "3 minutes",
                           notes: "Focus on speed and form"
                       ),
@@ -134,7 +160,6 @@ extension Workout {
                           name: "Romanian Deadlifts",
                           sets: 4,
                           reps: 8,
-                          intensity: "Moderate",
                           restTime: "90 seconds",
                           notes: "Controlled eccentric phase"
                       )
@@ -152,7 +177,6 @@ extension Workout {
                           name: "Bicep Curls",
                           sets: 4,
                           reps: 12,
-                          intensity: "Light to Moderate",
                           restTime: "60 seconds",
                           notes: "Focus on squeezing at the top"
                       ),
@@ -160,7 +184,6 @@ extension Workout {
                           name: "Tricep Extensions",
                           sets: 4,
                           reps: 12,
-                          intensity: "Light to Moderate",
                           restTime: "60 seconds",
                           notes: "Controlled eccentric phase"
                       ),
@@ -168,7 +191,6 @@ extension Workout {
                           name: "Calf Raises",
                           sets: 3,
                           reps: 15,
-                          intensity: "Light to Moderate",
                           restTime: "45 seconds",
                           notes: "Full range of motion"
                       )

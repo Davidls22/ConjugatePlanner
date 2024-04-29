@@ -24,4 +24,13 @@ class WorkoutData: ObservableObject {
                 workouts.append(workout)
             }
         }
+    
+    func index(of workout: Workout) -> Int? {
+      for i in workouts.indices {
+        if workouts[i].id == workout.id {
+          return i
+        }
+      }
+      return nil
+    }
 }
